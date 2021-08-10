@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>【hexo】 博客搭建教程（汇总）</title>
+      <title>【hexo】 搭建博客（教程汇总）</title>
       <link href="/blog/hexo-%E6%B1%87%E6%80%BB/"/>
       <url>/blog/hexo-%E6%B1%87%E6%80%BB/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/css/APlayer.min.css"><script src="/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/js/Meting.min.js"></script><h2 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h2><p>搭建博客基础三篇：<strong>框架篇</strong>，<strong>必要篇</strong>，<strong>进阶篇</strong>。</p><ol><li><a href="/blog/hexo-01-%E6%A1%86%E6%9E%B6%E7%AF%87/" title="【hexo】博客框架搭建">【hexo】博客框架搭建</a> <ul><li>博客的<strong>框架搭建</strong><ul><li>hexo nodejs 等软件安装</li><li>部署方式及踩坑点</li></ul></li></ul></li><li><a href="/blog/hexo-02-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" title="【hexo】 基本设置及 butterfly 主题">【hexo】 基本设置及 butterfly 主题</a> <ul><li>butterfly 主题的<strong>设置和美化</strong><ul><li>安装主题</li><li>文章预览样式和内部样式</li><li>主页修改</li><li>标签分类等常用功能</li></ul></li></ul></li><li><a href="/blog/hexo-03-%E5%A4%8D%E6%9D%82%E8%AE%BE%E7%BD%AE/" title="【hexo】复杂样式的设置">【hexo】复杂样式的设置</a><ul><li>hexo 细碎杂记及设置<strong>复杂样式</strong><ul><li>文章置顶，隐藏，页面跳转等</li><li>评论，音乐，特效</li><li>后续计划</li></ul></li></ul></li></ol><h2 id="撰写博客"><a href="#撰写博客" class="headerlink" title="撰写博客"></a>撰写博客</h2><p>撰写博客必要三篇</p><ol><li>Github 设置：<a href="/Github%E5%A4%9A%E8%B4%A6%E6%88%B7%E8%AE%BE%E7%BD%AE/" title="Github 多账户设置及 git clone 加速">Github 多账户设置及 git clone 加速</a></li><li>文章语法：<a href="/Markdown-%E8%AF%AD%E6%B3%95/" title="Markdown 语法">Markdown 语法</a></li><li>图文加载：<a href="/%E5%9B%BE%E5%BA%8A/" title="PicGo 搭建图床">PicGo 搭建图床</a></li></ol><p>以上，关于博客的搭建先到这里，后续更新再陆续添加。</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/css/APlayer.min.css"><script src="/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/js/Meting.min.js"></script><h2 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h2><p>搭建博客基础三篇：<strong>框架篇</strong>，<strong>必要篇</strong>，<strong>进阶篇</strong>。</p><ol><li><a href="/blog/hexo-01-%E6%A1%86%E6%9E%B6%E7%AF%87/" title="【hexo】博客框架搭建">【hexo】博客框架搭建</a> <ul><li>博客的<strong>框架搭建</strong><ul><li>hexo nodejs 等软件安装</li><li>部署方式及踩坑点</li></ul></li></ul></li><li><a href="/blog/hexo-02-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" title="【hexo】 butterfly 主题设置">【hexo】 butterfly 主题设置</a> <ul><li>butterfly 主题的<strong>设置和美化</strong><ul><li>安装主题</li><li>文章预览样式和内部样式</li><li>主页修改</li><li>标签分类等常用功能</li></ul></li></ul></li><li><a href="/blog/hexo-03-%E5%A4%8D%E6%9D%82%E8%AE%BE%E7%BD%AE/" title="【hexo】复杂样式的设置">【hexo】复杂样式的设置</a><ul><li>hexo 细碎杂记及设置<strong>复杂样式</strong><ul><li>文章置顶，隐藏，页面跳转等</li><li>评论，音乐，特效</li><li>后续计划</li></ul></li></ul></li></ol><h2 id="撰写博客"><a href="#撰写博客" class="headerlink" title="撰写博客"></a>撰写博客</h2><p>撰写博客必要三篇</p><ol><li>Github 设置：<a href="/Github%E5%A4%9A%E8%B4%A6%E6%88%B7%E8%AE%BE%E7%BD%AE/" title="Github 多账户设置及 git clone 加速">Github 多账户设置及 git clone 加速</a></li><li>文章语法：<a href="/Markdown-%E8%AF%AD%E6%B3%95/" title="Markdown 语法">Markdown 语法</a></li><li>图文加载：<a href="/%E5%9B%BE%E5%BA%8A/" title="PicGo 搭建图床">PicGo 搭建图床</a></li></ol><p>以上，关于博客的搭建先到这里，后续更新再陆续添加。</p>]]></content>
       
       
       <categories>
@@ -73,7 +73,7 @@
     
     
     <entry>
-      <title>【hexo】 基本设置及 butterfly 主题</title>
+      <title>【hexo】 butterfly 主题设置</title>
       <link href="/blog/hexo-02-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
       <url>/blog/hexo-02-%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</url>
       
