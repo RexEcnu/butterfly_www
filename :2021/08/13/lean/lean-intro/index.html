@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lean 简介及安装 | Rex's blog</title><meta name="keywords" content="lean"><meta name="author" content="致宏"><meta name="copyright" content="致宏"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lean 的简单介绍及安装教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lean 简介及安装">
+<meta property="og:url" content="http://www.wzhecnu.xyz/:2021/08/13/lean/lean-intro/index.html">
+<meta property="og:site_name" content="Rex&#39;s blog">
+<meta property="og:description" content="Lean 的简单介绍及安装教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/pic4.jpg">
+<meta property="article:published_time" content="2021-08-13T08:49:22.000Z">
+<meta property="article:modified_time" content="2021-08-15T03:27:34.284Z">
+<meta property="article:author" content="致宏">
+<meta property="article:tag" content="lean">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/pic4.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.wzhecnu.xyz/:2021/08/13/lean/lean-intro/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lean 简介及安装',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2021-08-15 11:27:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/pic4.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Rex's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lean 简介及安装</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-08-13T08:49:22.000Z" title="发表于 2021-08-13 16:49:22">2021-08-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-08-15T03:27:34.284Z" title="更新于 2021-08-15 11:27:34">2021-08-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lean 简介及安装"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>参考链接</p>
+<blockquote>
+<p>LEAN 官方文档：<a target="_blank" rel="noopener" href="https://leanprover.github.io/theorem_proving_in_lean/">LEAN</a><br>知乎：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/183902909">Lean 的前世今生</a><br>知乎：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/347064547/answer/1250972885">如何评价 MSR 的 Lean Theorem Prover？</a><br>知乎：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/181671237">计算机辅助证明简介</a><br>量子位：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/wSvnyJ3JG0xkntZ8qbfklQ">菲尔兹奖得主舒尔茨没做到的事，现在被计算机证明了</a></p>
+</blockquote>
+<p>软件安装<a href="#install">点这里</a>跳转</p>
+<h2 id="Lean-简介"><a href="#Lean-简介" class="headerlink" title="Lean 简介"></a>Lean 简介</h2><p>Lean 是一个交互式定理证明器（Interactive Theorem Prover, ITP），也是一门通用函数式编程语言（从 Lean 3 开始）。微软研究院在2013年推出这一计算机定理证明器，数学家可以把数学定理转换成代码，再输入到 Lean 中，让程序来验证定理是否正确。当然，用于定理证明的编程语言还有很多，比如 <a target="_blank" rel="noopener" href="https://coq.inria.fr/">Coq</a>，<a target="_blank" rel="noopener" href="https://isabelle.in.tum.de/">isabelle</a>，<a target="_blank" rel="noopener" href="https://www.cl.cam.ac.uk/~jrh13/hol-light/">HOL Light</a> 等，但相比之下，Lean 有更多优点且更契合数学习惯，几种语言的对比参看<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/347064547/answer/1250972885">这里</a>。</p>
+<p>维基百科上，Lean 的词条名是 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lean_(proof_assistant)">Lean(proof assistant)</a>，括号内容说明了 Lean 的主要作用是<strong>辅助推导</strong>，而非完全的自动证明。B站上关于 Lean 辅助证明数学命题的演示： <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wU4y1475g">素数无穷多的证明</a>。演示展现 Lean 的两个特点，一是逻辑推导的严谨，二是证明过程中，Lean 会根据命题内容检索定理，起辅助作用。</p>
+<p>计算机辅助证明是依照严格的类型论逻辑计算得到的结果，结论自然比人可靠。如果能结合自动推导，或许未来能给数学带来新的革命。<br>附：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1iB4y1A7KW">Kevin Buzzard 关于未来数学的演讲</a></p>
+<hr>
+<h2 id="安装及使用-ubuntu"><a href="#安装及使用-ubuntu" class="headerlink" title="安装及使用(ubuntu)"></a><span id="install">安装及使用(ubuntu)</span></h2><blockquote>
+<p>官方教程：<a target="_blank" rel="noopener" href="https://leanprover-community.github.io/get_started.html">LEAN</a></p>
+</blockquote>
+<p>由于个人平时用 Ubuntu 系统更多，所以 Windows 系统的安装方法就不写了，参看官方教程。</p>
+<h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h3><p>输入下方命令一键安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q https://raw.githubusercontent.com/leanprover-community/mathlib-tools/master/scripts/install_debian.sh &amp;&amp; bash install_debian.sh ; rm -f install_debian.sh &amp;&amp; source ~/.profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="语法解析"><a href="#语法解析" class="headerlink" title="语法解析"></a>语法解析</h3><p>由于接触 Ubuntu 不久，没有系统学过 shell 语法，基本是用什么学什么，所以这里顺带记个 shell 命令的笔记。</p>
+<h4 id="命令拆分"><a href="#命令拆分" class="headerlink" title="命令拆分"></a>命令拆分</h4><p>在用 linux 命令的时候，我们经常需要同时执行多条命令。上边的命令实际由命令组成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># wget 下载 .sh 脚本</span><br><span class="line">wget -q https://raw.githubusercontent.com/leanprover-community/mathlib-tools/master/scripts/install_debian.sh</span><br><span class="line"></span><br><span class="line"># bash 运行脚本</span><br><span class="line">bash install_debian.sh</span><br><span class="line"></span><br><span class="line"># rm 删除脚本文件</span><br><span class="line">rm -f install_debian.sh</span><br><span class="line"></span><br><span class="line"># source 执行文件中的命令</span><br><span class="line">source ~/.profile</span><br></pre></td></tr></table></figure>
+
+<p>命令之间分割方式如下（<a target="_blank" rel="noopener" href="https://blog.csdn.net/stpeace/article/details/51870812">参考CSDN</a>）：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分号</td>
+<td>顺序地独立执行各条命令， 彼此之间不关心是否失败， 所有命令都会执行。</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>顺序执行各条命令， 只有当前一个执行成功时候， 才执行后面的。</td>
+</tr>
+<tr>
+<td>||</td>
+<td>顺序执行各条命令， 只有当前面一个执行失败的时候， 才执行后面的。</td>
+</tr>
+</tbody></table>
+<h4 id="内容解析"><a href="#内容解析" class="headerlink" title="内容解析"></a>内容解析</h4><ol>
+<li>wget 是 Linux 下载文件的常用命令，后接下载链接，参数可选。常用参数有<ul>
+<li><code>-c</code> 断点续传</li>
+<li><code>-q</code> 不显示指令执行过程</li>
+<li><code>-O + 文件名</code> 下载并以指定的文件名保存</li>
+</ul>
+</li>
+<li>bash 运行脚本，等同于先用 <code>chmod</code> 赋予文件执行权限，再直接用 <code>./文件名.sh</code> 执行脚本，参看 <a target="_blank" rel="noopener" href="https://blog.csdn.net/violet_echo_0908/article/details/52056071">bash运行脚本的几种方式</a>，以及 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/xx123/articles/9767839.html">bash 介绍</a>。</li>
+<li>rm 是删除文件的命令，<code>-f</code> 参数设置强制删除，不提示确认。</li>
+<li>source 可以把一个文件的内容当成是 shell 来执行，在需要输入一长串命令时可以使用，参看 <a target="_blank" rel="noopener" href="https://blog.csdn.net/violet_echo_0908/article/details/52056071">博客-CSDN</a>。</li>
+</ol>
+<h3 id="软件使用"><a href="#软件使用" class="headerlink" title="软件使用"></a>软件使用</h3><p>Ubuntu 下，软件安装同时也装了 VsCode 扩展。直接新建 <code>.lean</code> 文件，用 vscode 打开就能编译了。</p>
+<p>演示视频-素数无穷多</p>
+<iframe src="//player.bilibili.com/player.html?aid=671179269&bvid=BV1wU4y1475g&cid=286235591&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 640px; height: 430px; max-width: 100%"> </iframe></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">致宏</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.wzhecnu.xyz/:2021/08/13/lean/lean-intro/">http://www.wzhecnu.xyz/:2021/08/13/lean/lean-intro/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">文章采用 '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.wzhecnu.xyz" target="_blank">Rex's blog</a>！'</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/lean/">lean</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/pic4.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 请作者喝茶</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/:2021/08/13/haskell/haskell-intro/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/pic3.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">haskell 简介及安装</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">致宏</div><div class="author-info__description">Math&Computer</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RexWzh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RexWzh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:51195500009@stu.ecnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/518870168" target="_blank" title="bilibili"><i class="fas fa-bold"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">新功能在陆续上线，欢迎一起交流！干杯！！！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lean-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Lean 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8-ubuntu"><span class="toc-number">2.</span> <span class="toc-text">安装及使用(ubuntu)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.</span> <span class="toc-text">安装命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%A3%E6%9E%90"><span class="toc-number">2.2.</span> <span class="toc-text">语法解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%8B%86%E5%88%86"><span class="toc-number">2.2.1.</span> <span class="toc-text">命令拆分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90"><span class="toc-number">2.2.2.</span> <span class="toc-text">内容解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">软件使用</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/:2021/08/13/lean/lean-intro/" title="Lean 简介及安装">Lean 简介及安装</a><time datetime="2021-08-13T08:49:22.000Z" title="发表于 2021-08-13 16:49:22">2021-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/:2021/08/13/haskell/haskell-intro/" title="haskell 简介及安装">haskell 简介及安装</a><time datetime="2021-08-13T08:38:47.000Z" title="发表于 2021-08-13 16:38:47">2021-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/:2021/08/06/blog/hexo-%E6%B1%87%E6%80%BB/" title="【hexo】 搭建博客（教程汇总）">【hexo】 搭建博客（教程汇总）</a><time datetime="2021-08-06T13:54:47.000Z" title="发表于 2021-08-06 21:54:47">2021-08-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/:2021/08/06/%E5%9B%BE%E5%BA%8A/" title="PicGo 搭建图床">PicGo 搭建图床</a><time datetime="2021-08-06T06:19:16.000Z" title="发表于 2021-08-06 14:19:16">2021-08-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/:2021/07/25/blog/hexo-03-%E5%A4%8D%E6%9D%82%E8%AE%BE%E7%BD%AE/" title="【hexo】复杂样式的设置">【hexo】复杂样式的设置</a><time datetime="2021-07-24T16:00:00.000Z" title="发表于 2021-07-25 00:00:00">2021-07-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 致宏</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><br>
+<a href="http://beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">粤ICP备2021109780号-1</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'dN45veyUthAneRX0HDR75O50-gzGzoHsz',
+      appKey: '2O7NsGaVqRizFEg6eYjX6kbJ',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: true,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="欢,迎,来,访,你,好,朋,友" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
