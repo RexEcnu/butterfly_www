@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>临时页面</title>
+      <link href="/2021/09/06/summer/"/>
+      <url>/2021/09/06/summer/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/css/APlayer.min.css"><script src="/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/js/Meting.min.js"></script><h1 id="毕业论文进展"><a href="#毕业论文进展" class="headerlink" title="毕业论文进展"></a>毕业论文进展</h1><p>论文目的： </p><ul><li>求奇异向量的公式</li></ul><p>主要进展：</p><ul><li>用图表示 pbw 基：求图的系数</li><li>给出图的递推关系，得唯一性</li></ul><p>最后目标：</p><ul><li>解递推：对每个图能用图的信息直接写出系数</li></ul><p>暑假进展：</p><ul><li>化简递推关系</li><li>低阶数据(<a href="#data">跳转</a>)</li></ul><p>后续方案：</p><ul><li>进行数据实验，归纳公式，先猜再证</li><li>继续化归递推关系，推导更多组合性质</li></ul><p>个人计划：</p><ul><li>组合层面说，这是个很有挑战的游戏，能玩出很多花样</li><li>现实点说，处理都的是小问题，杀鸡用牛刀</li><li>计划：在递推关系这里停下，收尾</li></ul><p>论文结论：奇异向量的唯一性，以及递推求解公式（差一个紧凑公式）</p><h1 id="低阶数据"><a href="#低阶数据" class="headerlink" title="低阶数据"></a><span id="data">低阶数据</span></h1><p>下边是一些低阶问题的解，数据递推方式排列（多种排法）</p><p>1-3 阶<br><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20210906152056.png" alt="pic"></p><p>4 阶前10和后10项<br><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/20210906153927.png" alt="pic"></p><p>5 阶前10和后10项<br><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/20210906154522.png" alt="pic"></p><p>Dynkin 图<br><img src="https://i.loli.net/2021/09/06/MQKApPxXYuHZqSU.jpg" alt="2021-09-06_23-32-54"></p><h1 id="暑假内容"><a href="#暑假内容" class="headerlink" title="暑假内容"></a>暑假内容</h1><ol><li>搭建博客，开始写博客</li><li>其他技术学习</li><li>LEAN：<a href="/2021/08/13/programming/lean-intro/" title="Lean 简介及安装">Lean 简介及安装</a></li></ol><h1 id="量子计算相关"><a href="#量子计算相关" class="headerlink" title="量子计算相关"></a>量子计算相关</h1><p><a href="https://github.com/RexWzh/Quantum-Computing">GitHub仓库</a></p><p>课程讲义</p><ul><li><a href="https://cdn.jsdelivr.net/gh/RexWzh/PicBedPC/Quantum/Chapter1.pdf">Chapter1</a></li><li><a href="https://cdn.jsdelivr.net/gh/RexWzh/PicBedPC/Quantum/Chapter2.pdf">Chapter2</a></li><li><a href="https://cdn.jsdelivr.net/gh/RexWzh/PicBedPC/Quantum/Chapter3.pdf">Chapter3</a></li><li><a href="https://cdn.jsdelivr.net/gh/RexWzh/PicBedPC/Quantum/Chapter4.pdf">Chapter4</a></li><li><a href="https://cdn.jsdelivr.net/gh/RexWzh/PicBedPC/Quantum/Chapter5.pdf">Chapter5</a></li><li><a href="https://cdn.jsdelivr.net/gh/RexWzh/PicBedPC/Quantum/Chapter6.pdf">Chapter6</a></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> demo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>临时文件</title>
       <link href="/2021/09/06/tmpresult/"/>
       <url>/2021/09/06/tmpresult/</url>
