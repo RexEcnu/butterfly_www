@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>量子 shor 算法的实现 | Python Quskit | Rex's blog</title><meta name="keywords" content="Python,quantum"><meta name="author" content="致宏"><meta name="copyright" content="致宏"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="唠唠闲话最近在学量子计算，大多教材的介绍路线是从线性代数到量子算法的实现。 正好上学期讨论班讲“公钥系统”时接触了量子 shor 算法，趁此机会以实现 shor 算法为目标开启这一领域的学习。 （点这里直接进入主题） 量子力学网络上关于量子力学的科普介绍很多，但其中不乏曲解，断章取义和伪科普。所幸就有了“遇事不决，量子力学”的调侃。 不过，有一说一，虽然量子力学没有一些人说的那么传呼其神，但在现实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="量子 shor 算法的实现 | Python Quskit">
+<meta property="og:url" content="http://www.wzhecnu.xyz/2021/09/13/programming/liang-zi-ji-suan/index.html">
+<meta property="og:site_name" content="Rex&#39;s blog">
+<meta property="og:description" content="唠唠闲话最近在学量子计算，大多教材的介绍路线是从线性代数到量子算法的实现。 正好上学期讨论班讲“公钥系统”时接触了量子 shor 算法，趁此机会以实现 shor 算法为目标开启这一领域的学习。 （点这里直接进入主题） 量子力学网络上关于量子力学的科普介绍很多，但其中不乏曲解，断章取义和伪科普。所幸就有了“遇事不决，量子力学”的调侃。 不过，有一说一，虽然量子力学没有一些人说的那么传呼其神，但在现实">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@master/WallPapers/3.jpg">
+<meta property="article:published_time" content="2021-09-13T14:09:08.000Z">
+<meta property="article:modified_time" content="2021-09-13T15:44:57.331Z">
+<meta property="article:author" content="致宏">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="quantum">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@master/WallPapers/3.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://www.wzhecnu.xyz/2021/09/13/programming/liang-zi-ji-suan/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '量子 shor 算法的实现 | Python Quskit',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2021-09-13 23:44:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/guestboard/"><i class="fa-fw far fa-comment-dots"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/RexWzh/PicBed@master/WallPapers/3.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Rex's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/guestboard/"><i class="fa-fw far fa-comment-dots"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">量子 shor 算法的实现 | Python Quskit</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-13T14:09:08.000Z" title="发表于 2021-09-13 22:09:08">2021-09-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-13T15:44:57.331Z" title="更新于 2021-09-13 23:44:57">2021-09-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="量子 shor 算法的实现 | Python Quskit"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="唠唠闲话"><a href="#唠唠闲话" class="headerlink" title="唠唠闲话"></a>唠唠闲话</h1><p>最近在学量子计算，大多教材的介绍路线是<strong>从线性代数到量子算法的实现</strong>。</p>
+<p>正好上学期讨论班讲“公钥系统”时接触了量子 shor 算法，趁此机会以实现 shor 算法为目标开启这一领域的学习。</p>
+<p>（<a href="#main">点这里</a>直接进入主题）</p>
+<h2 id="量子力学"><a href="#量子力学" class="headerlink" title="量子力学"></a>量子力学</h2><p>网络上关于量子力学的科普介绍很多，但其中不乏曲解，断章取义和伪科普。所幸就有了“遇事不决，量子力学”的调侃。</p>
+<p>不过，有一说一，虽然量子力学没有一些人说的那么传呼其神，但在现实生活中，量子的技术已经深入到我们生活的方方面面。</p>
+<p>摘知乎上的一段话，原文链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/51726529">量子力学真的已经很成功的应用在工程技术上面了吗？</a>。</p>
+<p>量子力学已经出现100多年，早就不是最尖端的物理了。事实上，量子力学是现代物理学所有研究领域的基石，是基础中的基础。而且，量子力学也早就被广泛应用到了技术当中，在化学、电子、材料等学科的研究中也用得很多。其实我一直希望关于量子力学的科普能做得更好一些，让更多人真正了解量子力学，而不是仅仅停留在又死又活的猫上。甚至有朝一日，量子力学能进入高中的课本，在某种意义上成为常识。</p>
+<h2 id="推荐资源"><a href="#推荐资源" class="headerlink" title="推荐资源"></a>推荐资源</h2><h3 id="书籍文献"><a href="#书籍文献" class="headerlink" title="书籍文献"></a>书籍文献</h3><ol>
+<li>量子计算的圣经：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed@master/pdf/quantum/three/Quantum%20Computation%20and%20Quantum%20Information.pdf">Quantum Computation and Quantum Information</a><br>这本书比较厚，有700+页，更适合做参考书；国内有中译本（文件较大，后续补发）</li>
+<li>从线性代数到物理实现： <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed@master/pdf/quantum/Mikio%20Nakahara,%20Tetsuo%20Ohmi%20-%20Quantum%20Computing.%20From%20Linear%20Algebra%20to%20Physical%20Realizations-CRC%20Press%20(2008">Nakahara Quantum Computing. From Linear Algebra to Physical Realizations</a>.pdf)<br>这本书证明写比较细致，容易阅读，初学推荐。</li>
+<li>科普读物：<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed@master/pdf/books/上帝掷骰子吗：量子物理史话%20曹天元.pdf">《上帝掷骰子吗：量子物理史话》</a><br>国内写得非常好的一本科普读物，推荐阅读。</li>
+</ol>
+<h2 id="视频资源"><a href="#视频资源" class="headerlink" title="视频资源"></a>视频资源</h2><p>视频资源主要来自 B 站。</p>
+<ol>
+<li>快速入门：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oq4y1j7iZ?spm_id_from=333.999.0.0">大一新生也能懂的量子计算</a><br>有几节课的细节跟不上，或许书本看完用来温习更好。</li>
+<li>系列课程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oy4y1U7PN?spm_id_from=333.999.0.0">斯坦福+伯克利教授亲授！！！最好的量子系列课程之一</a><br>视频内容很长，一直拖着没看。。。导师推荐。</li>
+<li>作者导读：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1L4411P7sX?spm_id_from=333.999.0.0">《上帝掷骰子吗：量子物理史话》</a><br>视频分很多小节介绍量子力学的概念，适合碎片时间阅读</li>
+<li>量子Kitty：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HM4y1L7Kb?spm_id_from=333.999.0.0">一起吐槽网上乱七八糟的量子计算误区</a><br>哈佛剑桥的up，科普比较准确专业，推荐～</li>
+</ol>
+<h2 id="相关博客"><a href="#相关博客" class="headerlink" title="相关博客"></a>相关博客</h2><h1 id="量子计算"><a href="#量子计算" class="headerlink" title="量子计算"></a><span id="main">量子计算</span></h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_41832255/article/details/89669650">计算机是如何运算的</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">致宏</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.wzhecnu.xyz/2021/09/13/programming/liang-zi-ji-suan/">http://www.wzhecnu.xyz/2021/09/13/programming/liang-zi-ji-suan/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">文章采用 '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.wzhecnu.xyz" target="_blank">Rex's blog</a>！'</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/quantum/">quantum</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@master/WallPapers/3.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 请作者喝茶</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/08/31/blog/math-tex/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/pic15.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">用 LaTeX 写博客的两种方法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/08/31/programming/latex-tool/" title="Python 编写 LaTeX 工具"><img class="cover" src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/pic13.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-31</div><div class="title">Python 编写 LaTeX 工具</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">致宏</div><div class="author-info__description">Math + Computer = ?</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/RexWzh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/RexWzh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:51195500009@stu.ecnu.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/518870168" target="_blank" title="bilibili"><i class="fas fa-bold"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">新功能在陆续上线，欢迎一起交流！干杯！！！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%94%A0%E5%94%A0%E9%97%B2%E8%AF%9D"><span class="toc-number">1.</span> <span class="toc-text">唠唠闲话</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6"><span class="toc-number">1.1.</span> <span class="toc-text">量子力学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E8%B5%84%E6%BA%90"><span class="toc-number">1.2.</span> <span class="toc-text">推荐资源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%A6%E7%B1%8D%E6%96%87%E7%8C%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">书籍文献</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E8%B5%84%E6%BA%90"><span class="toc-number">1.3.</span> <span class="toc-text">视频资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.4.</span> <span class="toc-text">相关博客</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97"><span class="toc-number">2.</span> <span class="toc-text">量子计算</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 致宏</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><br>
+<a href="https://beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">粤ICP备2021109780号</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'dN45veyUthAneRX0HDR75O50-gzGzoHsz',
+      appKey: '2O7NsGaVqRizFEg6eYjX6kbJ',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: true,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="欢,迎,来,访,你,好,朋,友" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
